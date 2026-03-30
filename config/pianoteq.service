@@ -1,0 +1,21 @@
+[Unit]
+Description=Pianoteq Headless
+After=sound.target local-fs.target
+Wants=sound.target
+
+[Service]
+Type=simple
+User=pianoteq
+Group=pianoteq
+WorkingDirectory=/opt/pianoteq
+ExecStartPre=/bin/sleep 3
+ExecStart=/opt/pianoteq/Pianoteq --headless --multicore max --serve 0.0.0.0:8081
+Restart=on-failure
+RestartSec=5
+LimitRTPRIO=90
+LimitNICE=-10
+LimitMEMLOCK=infinity
+CPUAffinity=1 2 3
+
+[Install]
+WantedBy=multi-user.target
