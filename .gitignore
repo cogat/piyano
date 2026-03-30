@@ -1,0 +1,22 @@
+# Pianoteq archives (user-supplied, not redistributable)
+pianoteq-pkg/
+*.7z
+*.tar.xz
+*.tar.gz
+*.zip
+
+# Pianoteq binaries
+Pianoteq*
+!pianoteq-pi5-brief.md
+
+# mise local config
+mise.local.toml
+.mise.local.toml
+
+# Editor / OS junk
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
