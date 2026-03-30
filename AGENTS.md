@@ -3,7 +3,7 @@
 ## Project overview
 
 Bash project that configures a Raspberry Pi 5 as a headless Pianoteq instrument.
-Target OS: Raspberry Pi OS Lite 64-bit (Debian Bookworm-based, aarch64).
+Target OS: Raspberry Pi OS Lite 64-bit (Debian Trixie/Bookworm, aarch64).
 
 ## Language and style
 
