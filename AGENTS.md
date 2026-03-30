@@ -9,7 +9,7 @@ Target OS: Raspberry Pi OS Lite 64-bit (Debian Bookworm-based, aarch64).
 
 - All scripts are **bash** (shebang: `#!/usr/bin/env bash`)
 - Use `set -euo pipefail` at the top of every script
-- 2-space indentation, formatted with `shfmt -i 2 -ci`
+- 2-space indentation, formatted with `shfmt --indent 2 --case-indent`
 - Must pass `shellcheck` with no warnings
 - Run `mise run check` before committing
 

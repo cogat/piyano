@@ -1,15 +1,18 @@
 [tools]
-"ubi:koalaman/shellcheck" = "latest"
-"ubi:mvdan/sh" = "latest"
+shellcheck = "latest"
+"ubi:mvdan/sh" = { version = "latest", exe = "shfmt" }
 
 [tasks.lint]
 description = "Lint all shell scripts with shellcheck"
-run = "shellcheck setup.sh tweaks/*.sh"
+run = "find . -name '*.sh' -not -path './.git/*' | xargs shellcheck"
 
 [tasks.fmt]
 description = "Format all shell scripts with shfmt"
-run = "shfmt -w -i 2 -ci setup.sh tweaks/*.sh"
+run = "find . -name '*.sh' -not -path './.git/*' | xargs shfmt -w --indent 2 --case-indent"
 
 [tasks.check]
 description = "Run lint and format check (CI-friendly)"
-run = ["shfmt -d -i 2 -ci setup.sh tweaks/*.sh", "shellcheck setup.sh tweaks/*.sh"]
+run = """
+find . -name '*.sh' -not -path './.git/*' | xargs shfmt -d --indent 2 --case-indent
+find . -name '*.sh' -not -path './.git/*' | xargs shellcheck
+"""
