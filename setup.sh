@@ -132,6 +132,16 @@ apt-get install -y -qq \
   libxrender1 >/dev/null
 success "Dependencies installed"
 
+info "Ensuring locale en_US.UTF-8 is available..."
+if ! locale -a 2>/dev/null | grep -qi 'en_US\.utf.*8'; then
+  sed -i 's/^# *en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen 2>/dev/null || true
+  locale-gen en_US.UTF-8 >/dev/null 2>&1 || true
+  update-locale LANG=en_US.UTF-8 >/dev/null 2>&1 || true
+  success "Locale en_US.UTF-8 generated"
+else
+  info "Locale en_US.UTF-8 already available"
+fi
+
 # -----------------------------------------------------------------------------
 # 2. Pianoteq acquisition
 # -----------------------------------------------------------------------------

@@ -28,6 +28,8 @@ In the imager settings:
 - Enter the Wifi connection details if you don't plan to use Ethernet
 - Enable SSH (password or key)
 
+Write the image. When it has finished, put the SD card into your Raspberry pi, turn it on, and wait for it to boot.
+
 ### 2. Get this repo onto the Pi
 
 ```bash
@@ -290,6 +292,15 @@ This does two things:
 3. Reboot
 
 ## Troubleshooting
+
+### Locale warning when SSHing in
+
+If you see `warning: setlocale: LC_CTYPE: cannot change locale (en_US.UTF-8)` when SSHing into the Pi, your SSH client is forwarding a locale that isn't generated on the Pi. The setup script fixes this automatically, but if you haven't run it yet:
+
+```bash
+sudo locale-gen en_US.UTF-8
+sudo update-locale LANG=en_US.UTF-8
+```
 
 ### No sound
 
